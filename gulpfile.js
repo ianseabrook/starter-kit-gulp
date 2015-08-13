@@ -4,7 +4,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
-var browserSync = require('browser-sync');
+var browserSync = require("browser-sync").create();
 var reload = browserSync.reload;
 
 var AUTOPREFIXER_BROWSERS = [
@@ -118,28 +118,32 @@ gulp.task("build", ['minifyScripts', 'styles'], function() {
 
 // Serve output from dev build
 gulp.task('serve', ['watchFiles'], function() {
-  browserSync({
-    notify: false,
+  browserSync.init({
+    notify: true,
     // Customize the BrowserSync console logging prefix
     logPrefix: 'IJS',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app']
+    server: {
+      baseDir: ['app', '.tmp']
+    }
   });
 });
 
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], function () {
-  browserSync({
-    notify: false,
-    logPrefix: 'WSK',
+  browserSync.init({
+    notify: true,
+    logPrefix: 'IJS',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: 'dist'
+    server: {
+      baseDir: 'dist'
+    }
   });
 });
 
