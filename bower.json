@@ -1,0 +1,18 @@
+{
+  "name": "starter-kit-gulp",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ianseabrook/starter-kit-gulp",
+  "authors": [
+    "Ian Seabrook <ian@ianseabrook.com>"
+  ],
+  "description": "fefswf",
+  "main": "app/scripts/main.js app/styles/application.scss",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
