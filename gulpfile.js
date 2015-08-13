@@ -28,10 +28,11 @@ gulp.task('eslint', function () {
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
-// Concatenate JavaScript
+// Compile Babel and Concatenate JavaScript
 gulp.task("concatScripts", function() {
     return gulp.src('app/scripts/*.js')
     .pipe($.sourcemaps.init())
+    .pipe($.babel())
     .pipe($.concat('app.js'))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('app/scripts/'));
